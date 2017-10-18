@@ -1,11 +1,20 @@
+<br><br><br>
+<div fxLayoutAlign="center center">
+  <h2>Select Brightness</h2>
+</div>
 <br>
 <div fxLayoutAlign="center center">
+  <i class="material-icons">brightness_low</i>
   <mat-slider min="0" max="100" step="1" value={{opaque}} (change)="onChangeSlider(sliderForm.value)" #sliderForm></mat-slider>
+  <i class="material-icons">brightness_high</i>
+</div>
+<div fxLayoutAlign="center center">
+  <h2>The brightness is {{sliderForm.value}}</h2>
 </div>
 <br>
 
-
 <div class="div-top" id="div-top-b">
-  <mat-icon class="fa fa-lightbulb-o fa-3x div-center-bulb"></mat-icon>
-  <mat-icon class="fa fa-circle div-center-circle" [ngStyle]= getStyles()></mat-icon>
+  <i class="fa fa-lightbulb-o fa-3x div-center-bulb"></i>
+  <i class="fa fa-circle div-center-circle" [ngStyle]= getStyles()></i>
 </div>
+

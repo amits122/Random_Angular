@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class BrightnessComponent implements OnInit {
 
-  blur: number = 40;
+  blur: number = 25;
   size: number = 10;
 
   constructor() { 
@@ -18,8 +18,8 @@ export class BrightnessComponent implements OnInit {
   }
 
   onChangeSlider(idX){
-    this.blur = 40 - 0.2 * idX;
-    this.size = 10 + 0.2 * idX;
+    this.blur = 25 - 0.1 * idX;
+    this.size = 10 + 0.15 * idX;
   }
 
   getStyles(){

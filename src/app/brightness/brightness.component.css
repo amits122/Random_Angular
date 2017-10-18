@@ -9,8 +9,9 @@
     position:absolute;
 }
 .div-center-bulb {
-    top: calc(50% - 24px);
-    left: calc(50% - 24px);
+    font-size: 10vw;
+    top: calc(50% - 5vw);
+    left: calc(50% - 5vw);
     position:absolute;
     z-index: 1;
 }
