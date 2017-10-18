@@ -1,0 +1,11 @@
+<br>
+<div fxLayoutAlign="center center">
+  <mat-slider min="0" max="100" step="1" value={{opaque}} (change)="onChangeSlider(sliderForm.value)" #sliderForm></mat-slider>
+</div>
+<br>
+
+
+<div class="div-top" id="div-top-b">
+  <mat-icon class="fa fa-lightbulb-o fa-3x div-center-bulb"></mat-icon>
+  <mat-icon class="fa fa-circle div-center-circle" [ngStyle]= getStyles()></mat-icon>
+</div>

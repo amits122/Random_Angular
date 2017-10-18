@@ -1,0 +1,49 @@
+<div fxLayout = "column">
+  <div fxLayoutAlign="center center">
+    <h1>Select Optimum Value</h1>
+  </div>
+  <div>
+    <br>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="15%" fxLayoutAlign="center">
+      <button mat-icon-button (click)="onClickDec(0)" (mousedown)="onMouseDownDec(0)" (mouseup)="onMouseUpDec()">
+        <mat-icon class="fa fa-minus-circle fa-2x"></mat-icon>
+      </button>
+    </div>
+    <div fxFlex="70%" fxLayoutAlign="center center">
+      <mat-form-field (change)="onChangeVal(0, rangeForm.value)">
+        <input matInput placeholder="Range(0 - 100)" value="{{rangeVal}}" #rangeForm>
+      </mat-form-field>
+    </div>
+    <div fxFlex="15%" fxLayoutAlign="center">
+      <button mat-icon-button (click)="onClickInc(0)" (mousedown)="onMouseDownInc(0)" (mouseup)="onMouseUpInc()">
+        <mat-icon class="fa fa-plus-circle fa-2x"></mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div fxLayoutAlign="center center">
+    <h1>Select Optimum Time</h1>
+  </div>
+  <div>
+    <br>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="15%" fxLayoutAlign="center">
+      <button mat-icon-button (click)="onClickDec(1)" (mousedown)="onMouseDownDec(1)" (mouseup)="onMouseUpDec()">
+        <mat-icon class="fa fa-minus-circle fa-2x"></mat-icon>
+      </button>
+    </div>
+    <div fxFlex="70%" fxLayoutAlign="center center">
+      <mat-form-field (change)="onChangeVal(1, timeForm.value)">
+        <input matInput placeholder="Time(24 hour)" value="{{timeToDisp[0]}} hh : {{timeToDisp[1]}} mm : {{timeToDisp[2]}} ss" disabled #timeForm>
+      </mat-form-field>
+    </div>
+    <div fxFlex="15%" fxLayoutAlign="center">
+      <button mat-icon-button (click)="onClickInc(1)" (mousedown)="onMouseDownInc(1)" (mouseup)="onMouseUpInc()">
+        <mat-icon class="fa fa-plus-circle fa-2x"></mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

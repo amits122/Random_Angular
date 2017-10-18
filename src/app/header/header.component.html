@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <span fxFlex="45%"><img src="/assets/images/favicon.ico"></span>
+  <h2>Menu</h2>
+  <span fxFlex></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <i class="fa fa-bars fa-2x"></i>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/home">
+      <i class="fa fa-home fa-lg"></i> Home
+    </button>
+    <button mat-menu-item routerLink="/range">
+      <i class="fa fa-gamepad fa-lg"></i> Range
+    </button>
+    <button mat-menu-item routerLink="/graph">
+      <i class="fa fa-bar-chart fa-lg"></i> Graph
+    </button>
+    <button mat-menu-item routerLink="/brightness">
+      <i class="fa fa-lightbulb-o fa-lg"></i> Brightness
+    </button>
+  </mat-menu>
+</mat-toolbar>
+  

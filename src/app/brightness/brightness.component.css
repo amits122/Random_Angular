@@ -1,0 +1,31 @@
+#div-top-b {
+    background:#673ab7;
+}
+
+.div-top {
+    width:80vw;
+    height: calc(50vw * 0.6);
+    left:10vw;
+    position:absolute;
+}
+.div-center-bulb {
+    top: calc(50% - 24px);
+    left: calc(50% - 24px);
+    position:absolute;
+    z-index: 1;
+}
+
+.div-center-circle {
+    font-size: 10vw;
+    top: calc(50% - 5vw);
+    left: calc(50% - 5vw);
+    position:absolute;
+    color: white;
+    filter: blur(60px);
+    z-index: 0;
+}
+
+.mat-slider-horizontal {
+    width: 70vw;
+}
+
