@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BrightnessService } from '../services/brightness.service';
+
 @Component({
   selector: 'app-range',
   templateUrl: './range.component.html',
@@ -24,13 +26,13 @@ export class RangeComponent implements OnInit {
   timeUL: number = 86400;
 
 
-  constructor() { }
+  constructor(private brightnessServiceOnRange: BrightnessService) { }
 
   ngOnInit() {
     this.rep = 0;
     this.timeoutHandler = 0;
 
-    this.rangeVal = 50;
+    this.rangeVal = this.brightnessServiceOnRange.brightnessVar;
     this.jumpVal = this.baseJumpVal = 1;
 
     this.timeInSec = 3661
@@ -109,6 +111,7 @@ export class RangeComponent implements OnInit {
         this.rangeVal = this.rangeUL;
       else
         this.rangeVal += this.jumpVal;
+      this.brightnessServiceOnRange.brightnessVar = this.rangeVal;
     }
     else if(idX == 1){
       if(this.timeInSec + this.jumpTime >= this.timeUL)
@@ -125,6 +128,7 @@ export class RangeComponent implements OnInit {
         this.rangeVal = this.rangeLL;
       else
         this.rangeVal -= this.jumpVal;
+      this.brightnessServiceOnRange.brightnessVar = this.rangeVal;
     }
     else if(idX == 1){
       if(this.timeInSec - this.jumpTime <= this.timeLL)

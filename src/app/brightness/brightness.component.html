@@ -13,8 +13,11 @@
 </div>
 <br>
 
-<div class="div-top" id="div-top-b">
-  <i class="fa fa-lightbulb-o fa-3x div-center-bulb"></i>
-  <i class="fa fa-circle div-center-circle" [ngStyle]= getStyles()></i>
+<div fxLayoutAlign="center">
+  <div fxFlex id="div-top">
+    <div fxflex class="div-centre">
+      <i id="fake-div" [ngStyle]= getStyles()></i>
+      <i class="material-icons bulb">lightbulb_outline</i>
+    </div>
+  </div>
 </div>
-

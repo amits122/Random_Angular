@@ -17,6 +17,9 @@ import { HomeComponent } from './home/home.component';
 import { RangeComponent } from './range/range.component';
 import { GraphComponent } from './graph/graph.component';
 import { BrightnessComponent } from './brightness/brightness.component';
+import { ChartModule } from 'angular-highcharts';
+
+import { BrightnessService } from './services/brightness.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { BrightnessComponent } from './brightness/brightness.component';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ChartModule,
     FormsModule,
     FlexLayoutModule,
     HttpModule,
@@ -42,8 +46,9 @@ import { BrightnessComponent } from './brightness/brightness.component';
     MatMenuModule,
     MatCardModule,
     MatSliderModule
+    
   ],
-  providers: [],
+  providers: [BrightnessService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,8 @@
-<p>
-  graph works!
-</p>
+<button mat-icon-button (click)="add()" >Next</button>
+<div [chart] = "chart"></div>
+<div>
+  <span>
+      <textarea id = "texty" ></textarea>
+      <button id = "bbutton" onclick= "passVal(texty.value)" >Press</button>
+    </span>
+</div>

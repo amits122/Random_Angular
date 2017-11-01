@@ -1,33 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSliderModule } from '@angular/material';
+
+import { BrightnessService } from '../services/brightness.service';
 
 @Component({
   selector: 'app-brightness',
   templateUrl: './brightness.component.html',
   styleUrls: ['./brightness.component.css']
 })
-
 export class BrightnessComponent implements OnInit {
 
-  blur: number = 25;
-  size: number = 10;
+  opaque: number;
 
-  constructor() { 
+  constructor(private brightnessServiceOnBr: BrightnessService) { 
   }
 
   ngOnInit() {
+    this.opaque = this.brightnessServiceOnBr.brightnessVar;
   }
 
   onChangeSlider(idX){
-    this.blur = 25 - 0.1 * idX;
-    this.size = 10 + 0.15 * idX;
+    this.opaque = idX;
+    this.brightnessServiceOnBr.brightnessVar = this.opaque;
+    
   }
 
   getStyles(){
-    let myStyle = {
-      'font-size' : this.size+'vw',
-      'top' : 'calc(50% - ' + this.size/2+'vw)',
-      'left': 'calc(50% - ' + this.size/2+'vw)',
-      'filter' : 'blur('+this.blur+'px)' 
+    var str1 = "0px 0px ";
+    str1 += this.opaque * 1.2 + "px " + this.opaque * 0.6 + "px" + " #fff";
+    console.log(str1)
+    let myStyle={
+      'box-shadow' : str1
     }
     return myStyle;
   }
