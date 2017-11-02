@@ -21,9 +21,15 @@ export class RangeComponent implements OnInit {
   
   timeInSec: number;
   timeToDisp : number[];
-  jumpTime: number = 0;
+  jumpTime: number;
   timeLL: number = 0;
   timeUL: number = 86400;
+
+  jumpTime2List = [1, 5, 10, 30, 60, 120, 600, 1200, 1800, 3600];
+  jumpTime2: number;
+  listVal: number;
+  timeToDisp2: number[];
+  timeInSec2: number;
 
 
   constructor(private brightnessServiceOnRange: BrightnessService) { }
@@ -37,7 +43,12 @@ export class RangeComponent implements OnInit {
 
     this.timeInSec = 3661
     this.jumpTime = this.baseJumpTime = 1;
-    this.updateTime();
+    this.updateTime(1);
+
+    this.timeInSec2 = 3600;
+    this.listVal = 0; 
+    this.jumpTime2 = this.jumpTime2List[this.listVal];
+    this.updateTime(2);
   }
 
   onClickDec(idX){
@@ -51,8 +62,11 @@ export class RangeComponent implements OnInit {
         //console.log(this.rep, this.jumpVal)
         if(idX == 0)
           this.jumpVal *= 2;
-        else
+        else if(idX == 1)
           this.jumpTime *= 2;
+        else if(idX == 2 && this.jumpTime2 != 3600)
+          this.listVal += 1;
+          this.jumpTime2 = this.jumpTime2List[this.listVal];
       }
       this.decrement(idX);
       this.rep += 1;
@@ -74,8 +88,12 @@ export class RangeComponent implements OnInit {
         //console.log(this.rep, this.jumpVal)
         if(idX == 0)
           this.jumpVal *= 2;
-        else
+        else if(idX == 1)
           this.jumpTime *= 2;
+        else if(idX == 2 && this.jumpTime2 != 3600){
+          this.listVal += 1;
+          this.jumpTime2 = this.jumpTime2List[this.listVal];
+        }  
       }
       this.increment(idX);
       this.rep += 1;
@@ -88,11 +106,14 @@ export class RangeComponent implements OnInit {
 
   onChangeVal(range){
     this.rangeVal = +range;
-    this.updateTime();
   }
 
-  updateTime(){
-    this.timeToDisp = [ Math.floor(this.timeInSec/3600), Math.floor((this.timeInSec%3600)/60), Math.floor((this.timeInSec%3600)%60) ];
+  updateTime(idX){
+    if(idX == 1)
+      this.timeToDisp = [ Math.floor(this.timeInSec/3600), Math.floor((this.timeInSec%3600)/60), Math.floor((this.timeInSec%3600)%60) ];
+    else if(idX == 2)
+      this.timeToDisp2 = [ Math.floor(this.timeInSec2/3600), Math.floor((this.timeInSec2%3600)/60), Math.floor((this.timeInSec2%3600)%60) ];
+    
   }
 
   resetOnMouseUp(){
@@ -102,6 +123,8 @@ export class RangeComponent implements OnInit {
       this.jumpTime = this.baseJumpTime;
       this.rep = 0;
       this.timeoutHandler = 0;
+      this.listVal = 0; 
+      this.jumpTime2 = this.jumpTime2List[this.listVal];
     }
   }
 
@@ -118,7 +141,14 @@ export class RangeComponent implements OnInit {
         this.timeInSec = this.timeUL;
       else
         this.timeInSec += this.jumpTime;
-      this.updateTime();
+      this.updateTime(idX);
+    }
+    else if(idX == 2){
+      if(this.timeInSec2 + this.jumpTime2 >= this.timeUL)
+        this.timeInSec2 = this.timeUL;
+      else
+        this.timeInSec2 += this.jumpTime2;
+      this.updateTime(idX);
     }
   }
 
@@ -135,7 +165,14 @@ export class RangeComponent implements OnInit {
         this.timeInSec = this.timeLL;
       else
         this.timeInSec -= this.jumpTime;
-      this.updateTime();
+      this.updateTime(idX);
+    }
+    else if(idX == 2){
+      if(this.timeInSec2 - this.jumpTime2 <= this.timeLL)
+        this.timeInSec2 = this.timeLL;
+      else
+        this.timeInSec2 -= this.jumpTime2;
+      this.updateTime(idX);
     }
   }
 }

@@ -46,4 +46,28 @@
       </button>
     </div>
   </div>
+
+  <div fxLayoutAlign="center center">
+    <h2>Select Optimum Time</h2>
+  </div>
+  <div>
+    <br>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="15%" fxLayoutAlign="center">
+      <button mat-icon-button (click)="onClickDec(2)" (mousedown)="onMouseDownDec(2)" (mouseup)="onMouseUpDec()">
+        <mat-icon class="fa fa-minus-circle fa-2x"></mat-icon>
+      </button>
+    </div>
+    <div fxFlex="70%" fxLayoutAlign="center center">
+      <mat-form-field (change)="onChangeVal(2, timeForm.value)">
+        <input matInput placeholder="Time(24 hour)" value="{{timeToDisp2[0]}} hh : {{timeToDisp2[1]}} mm : {{timeToDisp2[2]}} ss" disabled #timeForm>
+      </mat-form-field>
+    </div>
+    <div fxFlex="15%" fxLayoutAlign="center">
+      <button mat-icon-button (click)="onClickInc(2)" (mousedown)="onMouseDownInc(2)" (mouseup)="onMouseUpInc()">
+        <mat-icon class="fa fa-plus-circle fa-2x"></mat-icon>
+      </button>
+    </div>
+  </div>
 </div>
